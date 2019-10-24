@@ -6,6 +6,7 @@ WSSH Is a tool for brute forcing servers that has port 22 open via ssh, wssh is 
 
 ### Preview
 ##### This video has not been made by myself
+##### For make it faster, use more threads ;-)
 
 ![Screenshot](.preview/WSSH.gif)
 
