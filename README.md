@@ -15,7 +15,7 @@ WSSH Is a tool for brute forcing servers that has port 22 open via ssh, wssh is 
     git clone https://github.com/wuseman/wssh
     cd wssh
     chmod +x wssh*
-    ./ssh-bruter.sh -p <password> -c <commands> -f <hostfile> -u root -t <threads>
+    ./WSSH -p <password> -c <commands> -f <hostfile> -u root -t <threads>
     
 ### System requirements
 
