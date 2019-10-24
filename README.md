@@ -2,7 +2,7 @@
 
 ### ABOUT
 
-WSSH Is a tool for brute forcing servers that has port 22 open via ssh, wssh is probably the fastest ssh brute forcer that exists, wssh also includes a super fast portscanner 
+WSSH Is a tool for brute forcing servers that has port 22 open via ssh, wssh is probably the fastest ssh brute forcer that exists
 
 ### Preview
 ##### This video has not been made by myself
