@@ -10,7 +10,7 @@
 ################################ SOURCE CODE ###################################
 ################################################################################
 ####                                                                       #####
-####  Copyright (C) 2018-2019, wuseman                                     #####
+####  Copyright (C) 2019, wuseman                                          #####
 ####                                                                       #####
 ####  This program is free software; you can redistribute it and/or modify #####
 ####  it under the terms of the GNU General Public License as published by #####
@@ -112,7 +112,8 @@ while getopts ":c:f:t:u:p:aVl" bruter; do
   esac
 done
 
-
+which pssh &> /dev/null; if [[ $? = "0" ]]; then echo -e "$basename$0: internal error -- pssh is required to be installed ..."; exit 1; fi
+which sshpass &> /dev/null; if [[ $? = "0" ]]; echo -e "$basename$0:  internal error -- sshpass is required to be installed ..."; exit 1; fi
 if [[ -z $c ]]; then echo -e "$basename$0: internal error -- you must specify a command to be used";exit 1;fi
 if [[ -z $f ]]; then echo -e "$basename$0: internal error -- you must specify a file with ip addresses (hostnames if fine)";exit 1;fi
 if [[ -z $t ]]; then echo -e "$basename$0: internal error -- you must specify how many threads to use at same time (Default: 17)";exit 1;fi
