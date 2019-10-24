@@ -40,7 +40,7 @@ banner() {
 cat << "EOF"
       ___     ____________
      | W |   |            |
-    _|___|_  | SSH BRUTER |
+   _|___|_  | SSH BRUTER |
      (_xx)   |____________|
     __)#(__  |/
    ( )...( )(|)
@@ -117,7 +117,7 @@ if [[ -z $c ]]; then echo -e "$basename$0: internal error -- you must specify a 
 if [[ -z $f ]]; then echo -e "$basename$0: internal error -- you must specify a file with ip addresses (hostnames if fine)";exit 1;fi
 if [[ -z $t ]]; then echo -e "$basename$0: internal error -- you must specify how many threads to use at same time (Default: 17)";exit 1;fi
 if [[ -z $u ]]; then echo -e "$basename$0: internal error -- you must specify a username you want to use during the attack";exit;fi
-if [[ -z $å ]]; then echo -e "$basename$0: internal error -- you must specify a password you want to use during the attack";exit;fi
+if [[ -z $p ]]; then echo -e "$basename$0: internal error -- you must specify a password you want to use during the attack";exit;fi
 
 bruteforce() {
 banner
