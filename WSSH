@@ -63,6 +63,7 @@ cat << EOF
               -f        | File with all ip-addresses
               -h        | Print this useful text
               -l        | Print license for this tool
+              -p        | Password to use during attack
               -t        | How many threads to be used
               -V        | Print current version
               -u        | Username to use during attack
